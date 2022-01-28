@@ -20,4 +20,14 @@ class CommentsController < ApplicationController
     redirect_to post_path(@post)
   end
 
+  def update
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    if @comment.update(params[:comment].permit(:comment))
+      redirect_to post_path(@post)
+    else
+      render "edit"
+    end
+  end
+
 end
