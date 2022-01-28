@@ -1,3 +1,4 @@
 .comment
   %p= comment.comment
   %p= comment.user.email
+  = button_to "Delete Reply", [comment.post,comment], method: :delete
